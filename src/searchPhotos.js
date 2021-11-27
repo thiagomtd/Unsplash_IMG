@@ -3,15 +3,17 @@ import axios from 'axios'
 
 export default function SearchPhotos() {
   const [photos, setPhoto] = useState('')
-  const [clientId, setClientId] = useState(
-    'WgxXiRcaR2Uj6rxlWx_evMRQX2_2R6IM0Z6H9BuAwvw'
-  )
+  const [clientId, setClientId] = useState('')
   const [results, setResults] = useState([])
 
+  function token() {
+    setClientId('WgxXiRcaR2Uj6rxlWx_evMRQX2_2R6IM0Z6H9BuAwvw')
+  }
   function handleChange(event) {
     setPhoto(event.target.value)
+    token()
   }
-  
+
   function handleSubmit(event) {
     event.preventDefault()
     const url = `https://api.unsplash.com/search/photos?per_page=30&query=${photos}&client_id=${clientId}`
